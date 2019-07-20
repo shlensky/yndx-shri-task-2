@@ -1,4 +1,4 @@
-const { getRelativeSize, getMod, isBlock, isElem } = require("../helpers");
+const { getRelativeSize, getMod, isBlock, isElem, getLocation } = require("../helpers");
 
 function checkRuleDown(node, errors, context) {
     if (isBlock(node, "form")) {
@@ -20,7 +20,8 @@ function checkRuleUp(node, errors, context) {
             if (getMod(textNode, "size") !== getRelativeSize(context.formInfo.size, 2)) {
                 errors.push({
                     code: "FORM.HEADER_TEXT_SIZE_IS_INVALID",
-                    error: "Все текстовые блоки внутри заголовка формы должны быть на 2 шага больше эталонного размера."
+                    error: "Все текстовые блоки внутри заголовка формы должны быть на 2 шага больше эталонного размера.",
+                    location: getLocation(textNode)
                 });
             }
         });

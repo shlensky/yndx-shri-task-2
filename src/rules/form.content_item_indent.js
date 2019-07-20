@@ -1,4 +1,4 @@
-const { getRelativeSize, getMixMod } = require("../helpers");
+const { getRelativeSize, getMixMod, getLocation } = require("../helpers");
 
 function checkRuleDown(node, errors, context) {
 
@@ -11,7 +11,8 @@ function checkRuleUp(node, errors, context) {
         if (indentB !== getRelativeSize(context.formInfo.size, 1)) {
             errors.push({
                 code: "FORM.CONTENT_ITEM_INDENT_IS_INVALID",
-                error: "Строки формы (content-item) должны иметь нижний отступ со значением модификатора indent-b элемента формы item на 1 шаг больше эталонного размера."
+                error: "Строки формы (content-item) должны иметь нижний отступ со значением модификатора indent-b элемента формы item на 1 шаг больше эталонного размера.",
+                location: getLocation(node)
             });
         }
 

@@ -1,4 +1,4 @@
-const { getRelativeSize, getMixMod } = require("../helpers");
+const { getRelativeSize, getMixMod, getLocation } = require("../helpers");
 
 function checkRuleDown(node, errors, context) {
 
@@ -11,7 +11,8 @@ function checkRuleUp(node, errors, context) {
         if (spaceH !== getRelativeSize(context.formInfo.size, 1)) {
             errors.push({
                 code: "FORM.CONTENT_HORIZONTAL_SPACE_IS_INVALID",
-                error: "Горизонтальный внутренний отступ контентного элемента формы content должен быть на 1 шаг больше эталонного размера."
+                error: "Горизонтальный внутренний отступ контентного элемента формы content должен быть на 1 шаг больше эталонного размера.",
+                location: getLocation(node)
             });
         }
 
