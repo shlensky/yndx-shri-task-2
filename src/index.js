@@ -2,8 +2,7 @@ const jsonToAst = require('json-to-ast');
 
 const rules = [
     require("./rules/form.input_and_label_sizes"),
-    require("./rules/form.content_vertical_space"),
-    require("./rules/form.content_horizontal_space"),
+    require("./rules/form.content_space"),
     require("./rules/form.content_item_indent"),
     require("./rules/form.header_text_size"),
     require("./rules/form.header_space"),
