@@ -20,5 +20,7 @@
   "devDependencies": {
     "jest": "^24.8.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "json-to-ast": "^2.1.0"
+  }
 }

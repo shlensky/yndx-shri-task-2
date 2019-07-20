@@ -37,4 +37,13 @@ function isElem(node, blockName, elemName) {
     return node.block === blockName && node.elem === elemName;
 }
 
-module.exports = { getRelativeSize, findMix, getMixMod, getMod, isBlock, isElem };
+function getLocation(node) {
+    const loc = node.ast.loc;
+
+    return {
+        start: {line: loc.start.line, column: loc.start.column},
+        end: {line: loc.end.line, column: loc.end.column}
+    }
+}
+
+module.exports = { getRelativeSize, findMix, getMixMod, getMod, isBlock, isElem, getLocation };

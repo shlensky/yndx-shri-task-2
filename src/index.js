@@ -1,5 +1,6 @@
+const jsonToAst = require('json-to-ast');
+
 const rules = [
-    require("./rules/form"),
     require("./rules/form.input_and_label_sizes"),
     require("./rules/form.content_vertical_space"),
     require("./rules/form.content_horizontal_space"),
@@ -17,11 +18,18 @@ function traverse(node, errors, context) {
         checkRuleDown(node, errors, currentContext);
     });
 
-    if (node.content instanceof Array) {
-        node.content.map(function(child) { traverse(child, errors, currentContext) })
-    }
-    else if (node.content instanceof Object) {
-        traverse(node.content, errors, currentContext)
+    if (node.content) {
+        const contentAst = node.ast.children.find(property => property.key.value === "content");
+
+        if (node.content instanceof Array) {
+            node.content.map(function (child, i) {
+                child.ast = contentAst.value.children[i];
+                traverse(child, errors, currentContext);
+            })
+        } else if (node.content instanceof Object) {
+            node.content.ast = contentAst.value;
+            traverse(node.content, errors, currentContext)
+        }
     }
 
     rules.forEach(function ({checkRuleUp}) {
@@ -33,14 +41,27 @@ function traverse(node, errors, context) {
 
 function lint(text) {
     let root = JSON.parse(text);
+    let ast = jsonToAst(text);
     const errors = [];
     const context = {
         global: {}
     };
 
     if (root instanceof Array) {
-        root = {content: root};
+        root = {
+            content: root,
+            ast: {
+                children: [{
+                    key: {value: "content"},
+                    value: ast
+                }]
+            }
+        };
+
+    } else {
+        root.ast = ast;
     }
+
     traverse(root, errors, context);
 
     return errors;
