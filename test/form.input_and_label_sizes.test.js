@@ -133,3 +133,14 @@ test('form element with empty size', () => {
         }
     });
 });
+
+
+test('form without elements', () => {
+    let json =
+`{
+  "block": "form",
+  "content": "test"
+}`;
+
+    expect(lint(json)).toEqual([]);
+});

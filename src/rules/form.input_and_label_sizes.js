@@ -38,7 +38,7 @@ function checkRuleDown(node, errors, context) {
 
 function checkRuleUp(node, errors, context) {
     if (isBlock(node, "form")) {
-        if (!context.formInfo.size || context.formInfo.sizeMismatch) {
+        if (context.formInfo.sizeMismatch) {
             errors.push({
                 code: "FORM.INPUT_AND_LABEL_SIZES_SHOULD_BE_EQUAL",
                 error: "Все инпуты, кнопки и тексты в лейблах в блоке формы должны быть одного размера (и этот размер должен быть определен).",
