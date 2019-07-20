@@ -34,8 +34,8 @@ test('form content item should have bottom indent bigger by 1 step', () => {
         }
     });
 
-    // second error item
-    expect(errors).toContainObject({
+    // last content-item should not have bottom indent
+    expect(errors).not.toContainObject({
         code: "FORM.CONTENT_ITEM_INDENT_IS_INVALID",
         location: {
             start: { line: 13, column: 13 },
@@ -45,20 +45,27 @@ test('form content item should have bottom indent bigger by 1 step', () => {
 });
 
 test('positive scenario', () => {
-    let json = `{
+    let json =
+`{
+    "block": "form",
+    "content": {
         "block": "form",
-        "content": {
-            "block": "form",
-            "elem": "content",
-            "content": [                
-                {
-                    "block": "form",
-                    "elem":  "content-item",
-                    "mix": [{ "block": "form", "elem": "item", "mods": { "indent-b": "xl" } }],
-                    "content": { "block": "input", "mods": { "size": "l" } }
-                }
-            ]
-        }
-    }`;
+        "elem": "content",
+        "content": [
+            {
+                "block": "form",
+                "elem":  "content-item",
+                "mix": [{ "block": "form", "elem": "item", "mods": { "indent-b": "xl" } }],
+                "content": { "block": "input", "mods": { "size": "l" } }
+            },
+            {
+                "block": "form",
+                "elem":  "content-item",
+                "content": { "block": "input", "mods": { "size": "l" } }
+            }
+        ]
+    }
+}`;
+
     expect(lint(json)).not.toContainObject({code: "FORM.CONTENT_ITEM_INDENT_IS_INVALID"});
 });
