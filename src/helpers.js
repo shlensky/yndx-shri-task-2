@@ -17,7 +17,7 @@ function getRelativeSize(size, step) {
 }
 
 function findMix(node, blockName, elemName) {
-    return Array.isArray(node.mix) && node.mix.find((mix) => mix.block === blockName && mix.elem === elemName);
+    return Array.isArray(node.mix) && node.mix.find((mix) => mix.block === blockName && (elemName ? mix.elem === elemName : !mix.elem));
 }
 
 function getMixMod(node, blockName, elemName, modName) {
@@ -30,11 +30,19 @@ function getMod(node, modName) {
 }
 
 function isBlock(node, blockName) {
-    return node.block === blockName && !node.elem;
+    if (node.block === blockName && !node.elem) {
+        return true;
+    }
+
+    return !!findMix(node, blockName);
 }
 
 function isElem(node, blockName, elemName) {
-    return node.block === blockName && node.elem === elemName;
+    if (node.block === blockName && node.elem === elemName) {
+        return true;
+    }
+
+    return !!findMix(node, blockName, elemName);
 }
 
 function getLocation(node) {
