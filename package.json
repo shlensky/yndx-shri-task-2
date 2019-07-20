@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/shlensky/yndx-shri-task-2#readme",
   "devDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "json-to-ast": "^2.1.0"
