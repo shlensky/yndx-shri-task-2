@@ -6,6 +6,7 @@ const rules = [
     require("./rules/form.content_horizontal_space"),
     require("./rules/form.content_item_indent"),
     require("./rules/form.header_text_size."),
+    require("./rules/form.header_vertical_space"),
     require("./rules/text.several_h1"),
     require("./rules/text.invalid_h2_position"),
     require("./rules/text.invalid_h3_position"),

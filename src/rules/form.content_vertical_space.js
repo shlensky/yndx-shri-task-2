@@ -1,11 +1,11 @@
-const { getRelativeSize, getMixMod, getLocation } = require("../helpers");
+const {getRelativeSize, getMixMod, getLocation, isElem} = require("../helpers");
 
 function checkRuleDown(node, errors, context) {
 
 }
 
 function checkRuleUp(node, errors, context) {
-    if (node.block === "form" && node.elem === "content") {
+    if (isElem(node, "form", "content")) {
 
         const spaceV = getMixMod(node, "form", "item", "space-v");
         if (spaceV !== getRelativeSize(context.formInfo.size, 2)) {
