@@ -7,11 +7,11 @@ const rules = [
     require("./rules/form.content_item_indent"),
     require("./rules/form.header_text_size"),
     require("./rules/form.header_space"),
-    // require("./rules/form.footer_text_size"),
-    // require("./rules/form.footer_space"),
-    // require("./rules/text.several_h1"),
-    // require("./rules/text.invalid_h2_position"),
-    // require("./rules/text.invalid_h3_position"),
+    require("./rules/form.footer_text_size"),
+    require("./rules/form.footer_space"),
+    require("./rules/text.several_h1"),
+    require("./rules/text.invalid_h2_position"),
+    require("./rules/text.invalid_h3_position"),
 ];
 
 function traverse(node, errors, context) {

@@ -25,8 +25,11 @@ function checkRuleDown(node, errors, context) {
 
         const size = getMod(node, blockName, null, "size");
         if (!context.formInfo.size) {
-            // todo: what if element does not have size?
-            context.formInfo.size = size;
+            if (size) {
+                context.formInfo.size = size;
+            } else {
+                context.formInfo.sizeMismatch = true;
+            }
         } else if (size !== context.formInfo.size) {
             context.formInfo.sizeMismatch = true;
         }
