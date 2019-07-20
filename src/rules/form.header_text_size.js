@@ -1,4 +1,4 @@
-const { getRelativeSize, getMod, isBlock, isElem, getLocation } = require("../helpers");
+const {getRelativeSize, getMod, isBlock, isElem, getLocation} = require("../helpers");
 
 function checkRuleDown(node, errors, context) {
     if (isBlock(node, "form")) {
@@ -9,7 +9,7 @@ function checkRuleDown(node, errors, context) {
         context.insideHeader = true;
     }
 
-    if (isBlock(node,"text") && context.insideHeader) {
+    if (isBlock(node, "text") && context.insideHeader) {
         context.formInfo.headerTextNodes.push(node);
     }
 }

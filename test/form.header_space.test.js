@@ -1,6 +1,6 @@
 const lint = require('../src/index');
 
-test('form header vertical space should be the same as form elements size', () => {
+test('form header vertical space should be the same as other form elements size', () => {
     let json =
 `{
     "block": "form",
@@ -49,7 +49,7 @@ test('form header vertical space positive scenario', () => {
     expect(lint(json)).not.toContainObject({code: "FORM.HEADER_VERTICAL_SPACE_IS_INVALID"});
 });
 
-test('form header horizontal space should be bigger by 1 step', () => {
+test('form header horizontal space should be bigger then other form elements by 1 step', () => {
     let json =
 `{
     "block": "form",
