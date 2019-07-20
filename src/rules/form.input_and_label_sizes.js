@@ -15,10 +15,12 @@ function checkRuleDown(node, errors, context) {
     }
 
     // Check size (or store if it the first form element)
-    if (
-        isBlock(node, "input") ||
-        isBlock(node, "button") ||
-        (isBlock(node, "text") && context.insideLabel)
+    if (context.formInfo &&
+        (
+            isBlock(node, "input") ||
+            isBlock(node, "button") ||
+            (isBlock(node, "text") && context.insideLabel)
+        )
     ) {
         const blockName = isBlock(node, "input") ? "input" :
             isBlock(node, "button") ? "button" : "text";
