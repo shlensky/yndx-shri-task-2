@@ -145,7 +145,7 @@ test('form header horizontal space positive scenario', () => {
     expect(lint(json)).not.toContainObject({code: "FORM.HEADER_HORIZONTAL_SPACE_IS_INVALID"});
 });
 
-test('form header horizontal space positive scenario (space-h is absent)', () => {
+test('form header horizontal space is absent when form size is specified', () => {
     let json = `{
         "block": "form",
         "content": [            
@@ -159,6 +159,20 @@ test('form header horizontal space positive scenario (space-h is absent)', () =>
                     "size": "l"
                 }
             }
+        ]
+    }`;
+
+    expect(lint(json)).toContainObject({code: "FORM.HEADER_HORIZONTAL_SPACE_IS_INVALID"});
+});
+
+test('form header horizontal space is absent when form size is not specified', () => {
+    let json = `{
+        "block": "form",
+        "content": [            
+            {
+                "block": "form",
+                "elem": "header"
+            }            
         ]
     }`;
 

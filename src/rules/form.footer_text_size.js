@@ -15,7 +15,7 @@ function checkRuleDown(node, errors, context) {
 }
 
 function checkRuleUp(node, errors, context) {
-    if (isBlock(node, "form") && context.formInfo.footerTextNodes) {
+    if (isBlock(node, "form") && context.formInfo.footerTextNodes && context.formInfo.size) {
         return context.formInfo.footerTextNodes.map((textNode) => {
             if (getMod(textNode, "text", null, "size") !== context.formInfo.size) {
                 errors.push({

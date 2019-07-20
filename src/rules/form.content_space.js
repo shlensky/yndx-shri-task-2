@@ -11,7 +11,7 @@ function checkRuleDown(node, errors, context) {
 }
 
 function checkRuleUp(node, errors, context) {
-    if (isBlock(node, "form") && context.formInfo.contentNodes) {
+    if (isBlock(node, "form") && context.formInfo.contentNodes && context.formInfo.size) {
         context.formInfo.contentNodes.forEach(contentNode => {
             const spaceV = getMixMod(contentNode, "form", "item", "space-v");
             if (spaceV !== getRelativeSize(context.formInfo.size, 2)) {

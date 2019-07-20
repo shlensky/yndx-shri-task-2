@@ -66,7 +66,7 @@ function lint(text) {
 
     traverse(root, errors, context);
 
-    return [];//errors;
+    return errors;
 }
 
 module.exports = lint;

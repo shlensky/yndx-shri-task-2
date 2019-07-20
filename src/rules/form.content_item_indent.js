@@ -13,6 +13,7 @@ function checkRuleDown(node, errors, context) {
 }
 
 function checkRuleUp(node, errors, context) {
+    // todo make checking on exit from the whole form
     if (isElem(node, "form", "content")) {
         context.formContentInfo.contentItems.forEach((contentItemNode, i) => {
             const indentB = getMixMod(contentItemNode, "form", "item", "indent-b");
