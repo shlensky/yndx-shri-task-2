@@ -20,10 +20,14 @@ function checkRuleDown(node, errors, context) {
         isBlock(node, "button") ||
         (isBlock(node, "text") && context.insideLabel)
     ) {
+        const blockName = isBlock(node, "input") ? "input" :
+            isBlock(node, "button") ? "button" : "text";
 
+        const size = getMod(node, blockName, null, "size");
         if (!context.formInfo.size) {
-            context.formInfo.size = getMod(node, "size");
-        } else if (getMod(node, "size") !== context.formInfo.size) {
+            // todo: what if element does not have size?
+            context.formInfo.size = size;
+        } else if (size !== context.formInfo.size) {
             context.formInfo.sizeMismatch = true;
         }
     }

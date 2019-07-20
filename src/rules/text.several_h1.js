@@ -1,7 +1,7 @@
 const {getMod, isBlock, getLocation} = require("../helpers");
 
 function checkRuleDown(node, errors, context) {
-    if (isBlock(node, "text") && getMod(node, "type") === "h1") {
+    if (isBlock(node, "text") && getMod(node, "text", null, "type") === "h1") {
         if (context.global.containsH1) {
             errors.push({
                 code: "TEXT.SEVERAL_H1",

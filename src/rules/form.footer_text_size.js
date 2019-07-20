@@ -17,7 +17,7 @@ function checkRuleDown(node, errors, context) {
 function checkRuleUp(node, errors, context) {
     if (isBlock(node, "form") && context.formInfo.footerTextNodes) {
         return context.formInfo.footerTextNodes.map((textNode) => {
-            if (getMod(textNode, "size") !== context.formInfo.size) {
+            if (getMod(textNode, "text", null, "size") !== context.formInfo.size) {
                 errors.push({
                     code: "FORM.FOOTER_TEXT_SIZE_IS_INVALID",
                     error: "Размер текстовых блоков в подвале формы должен соответствовать эталонному.",

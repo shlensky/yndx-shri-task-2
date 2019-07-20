@@ -17,7 +17,7 @@ function checkRuleDown(node, errors, context) {
 function checkRuleUp(node, errors, context) {
     if (isBlock(node, "form") && context.formInfo.headerTextNodes) {
         return context.formInfo.headerTextNodes.map((textNode) => {
-            if (getMod(textNode, "size") !== getRelativeSize(context.formInfo.size, 2)) {
+            if (getMod(textNode, "text", null, "size") !== getRelativeSize(context.formInfo.size, 2)) {
                 errors.push({
                     code: "FORM.HEADER_TEXT_SIZE_IS_INVALID",
                     error: "Все текстовые блоки внутри заголовка формы должны быть на 2 шага больше эталонного размера.",

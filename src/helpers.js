@@ -25,7 +25,10 @@ function getMixMod(node, blockName, elemName, modName) {
     return mix && mix.mods ? mix.mods[modName] : null;
 }
 
-function getMod(node, modName) {
+function getMod(node, blockName, elemName, modName) {
+    const mixMod = getMixMod(node, blockName, elemName, modName);
+    if (mixMod) return mixMod;
+
     return node.mods ? node.mods[modName] : null;
 }
 
