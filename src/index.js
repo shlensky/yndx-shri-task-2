@@ -8,6 +8,7 @@ const rules = [
     require("./rules/form.header_text_size"),
     require("./rules/form.header_space"),
     require("./rules/form.footer_text_size"),
+    require("./rules/form.footer_space"),
     require("./rules/text.several_h1"),
     require("./rules/text.invalid_h2_position"),
     require("./rules/text.invalid_h3_position"),
