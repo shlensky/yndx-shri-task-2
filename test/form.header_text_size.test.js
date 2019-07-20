@@ -52,6 +52,15 @@ test('positive scenario', () => {
                 ]
             },
             {
+                "block": "mock",
+                "content": [
+                    {
+                        "block": "text",
+                        "mods": { "size": "xl" }
+                    }
+                ]
+            },
+            {
                 "block": "input",
                 "mods": {
                     "size": "l"
